@@ -13,7 +13,7 @@ class LocationSeeder extends Seeder
      */
     public function run(): void
     {
-        $zone = 'EVERGREEN';
+        $zone = 'EVERYELLOW';
         $rows = 1;
         $column = 5;
         for ($i = 1; $i <= $column; $i++) {
