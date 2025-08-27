@@ -30,9 +30,9 @@ export default function ShowPositions() {
     const zones = [...new Set(locations.map((loc) => loc.zone))];
     return (
         <AppLayout breadcrumbs={breadcrumbs}>
-            <Head title="List Customers" />
+            <Head title="Positions" />
             <div className="flex h-full flex-1 flex-col gap-4 overflow-x-auto p-4">
-                <div className="relative min-h-fit flex-1 overflow-hidden rounded-xl border border-gray-200 bg-white p-4 dark:border-gray-700 dark:bg-gray-900">
+                <div className="relative min-h-fit flex-1 overflow-hidden rounded-xl border border-gray-200 bg-white p-4 dark:border-gray-700 dark:bg-neutral-900">
                     <div className="mb-6 flex items-center justify-between">
                         <h1 className="text-2xl font-bold text-gray-800 dark:text-white">Position Containers</h1>
                         <Button asChild>
@@ -54,7 +54,7 @@ export default function ShowPositions() {
                                     .map((location) => (
                                         <div
                                             key={location.id}
-                                            className="rounded-lg border border-gray-300 bg-white p-3 shadow-sm dark:border-gray-600 dark:bg-gray-800"
+                                            className="rounded-lg border border-gray-300 bg-white p-3 shadow-sm dark:border-gray-600 dark:bg-neutral-800"
                                         >
                                             <div className="mb-2 text-sm font-semibold text-gray-800 dark:text-gray-100">
                                                 R{location.rows}-C{location.columns}

@@ -58,6 +58,7 @@ export default function Login({ status, canResetPassword }: LoginProps) {
                             value={data.email}
                             onChange={(e) => setData('email', e.target.value)}
                             placeholder="email@example.com"
+                            className="border border-gray-300 bg-transparent text-white placeholder-gray-400 selection:bg-gray-50/50 focus:border-blue-500 dark:border-gray-600 dark:text-white dark:placeholder-gray-500 dark:focus:border-blue-400"
                         />
                         <InputError message={errors.email} />
                     </div>
@@ -80,6 +81,7 @@ export default function Login({ status, canResetPassword }: LoginProps) {
                             value={data.password}
                             onChange={(e) => setData('password', e.target.value)}
                             placeholder="Password"
+                            className="border border-gray-300 bg-transparent text-white placeholder-gray-400 selection:bg-gray-50/50 focus:border-blue-500 dark:border-gray-600 dark:text-white dark:placeholder-gray-500 dark:focus:border-blue-400"
                         />
                         <InputError message={errors.password} />
                     </div>
@@ -91,11 +93,17 @@ export default function Login({ status, canResetPassword }: LoginProps) {
                             checked={data.remember}
                             onClick={() => setData('remember', !data.remember)}
                             tabIndex={3}
+                            className="border dark:border-gray-600 dark:focus:border-blue-400"
                         />
                         <Label htmlFor="remember">Remember me</Label>
                     </div>
 
-                    <Button type="submit" className="mt-4 w-full border-1 bg-transparent hover:cursor-pointer" tabIndex={4} disabled={processing}>
+                    <Button
+                        type="submit"
+                        className="w-full border border-gray-300 bg-transparent text-white hover:bg-gray-100/10 focus:ring-2 focus:ring-blue-500/50 dark:border-gray-600 dark:hover:bg-white/10 dark:focus:ring-blue-400/50"
+                        tabIndex={4}
+                        disabled={processing}
+                    >
                         {processing && <LoaderCircle className="h-4 w-4 animate-spin" />}
                         Log in
                     </Button>

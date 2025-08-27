@@ -148,7 +148,7 @@ export default function Task() {
                     {selectedTaskId !== null ? (
                         (() => {
                             const selectedTask = tasks.data.find((t) => t.id === selectedTaskId);
-                            console.log('Selected Task:', selectedTask);
+
                             return selectedTask ? (
                                 <div className="rounded-lg border border-gray-200 bg-white p-5 shadow dark:border-gray-700 dark:bg-gray-800">
                                     <div className="space-y-3">

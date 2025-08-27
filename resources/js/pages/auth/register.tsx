@@ -49,6 +49,7 @@ export default function Register() {
                             onChange={(e) => setData('name', e.target.value)}
                             disabled={processing}
                             placeholder="Full name"
+                            className="border border-gray-300 bg-transparent text-white placeholder-gray-400 selection:bg-gray-50/50 focus:border-blue-500 dark:border-gray-600 dark:text-white dark:placeholder-gray-500 dark:focus:border-blue-400"
                         />
                         <InputError message={errors.name} className="mt-2" />
                     </div>
@@ -65,6 +66,7 @@ export default function Register() {
                             onChange={(e) => setData('email', e.target.value)}
                             disabled={processing}
                             placeholder="email@example.com"
+                            className="border border-gray-300 bg-transparent text-white placeholder-gray-400 selection:bg-gray-50/50 focus:border-blue-500 dark:border-gray-600 dark:text-white dark:placeholder-gray-500 dark:focus:border-blue-400"
                         />
                         <InputError message={errors.email} />
                     </div>
@@ -81,6 +83,7 @@ export default function Register() {
                             onChange={(e) => setData('password', e.target.value)}
                             disabled={processing}
                             placeholder="Password"
+                            className="border border-gray-300 bg-transparent text-white placeholder-gray-400 selection:bg-gray-50/50 focus:border-blue-500 dark:border-gray-600 dark:text-white dark:placeholder-gray-500 dark:focus:border-blue-400"
                         />
                         <InputError message={errors.password} />
                     </div>
@@ -97,11 +100,17 @@ export default function Register() {
                             onChange={(e) => setData('password_confirmation', e.target.value)}
                             disabled={processing}
                             placeholder="Confirm password"
+                            className="border border-gray-300 bg-transparent text-white placeholder-gray-400 selection:bg-gray-50/50 focus:border-blue-500 dark:border-gray-600 dark:text-white dark:placeholder-gray-500 dark:focus:border-blue-400"
                         />
                         <InputError message={errors.password_confirmation} />
                     </div>
 
-                    <Button type="submit" className="mt-2 w-full bg-transparent border-1 hover:cursor-pointer" tabIndex={5} disabled={processing}>
+                    <Button
+                        type="submit"
+                        className="w-full border border-gray-300 bg-transparent text-white hover:bg-gray-100/10 focus:ring-2 focus:ring-blue-500/50 dark:border-gray-600 dark:hover:bg-white/10 dark:focus:ring-blue-400/50"
+                        tabIndex={5}
+                        disabled={processing}
+                    >
                         {processing && <LoaderCircle className="h-4 w-4 animate-spin" />}
                         Create account
                     </Button>
@@ -109,7 +118,7 @@ export default function Register() {
 
                 <div className="text-center text-sm text-muted-foreground">
                     Already have an account?{' '}
-                    <TextLink href={route('login')} tabIndex={6} className='text-white'>
+                    <TextLink href={route('login')} tabIndex={6} className="text-white">
                         Log in
                     </TextLink>
                 </div>
