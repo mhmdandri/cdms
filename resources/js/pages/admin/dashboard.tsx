@@ -41,13 +41,13 @@ export default function AdminDashboard() {
                     <StatCard
                         title="Total Customers"
                         value={totalCustomers}
-                        badge={diffCustomer > 0 ? `+${diffCustomer}` : `${diffCustomer}`}
+                        badge={diffCustomer > 0 ? `+${diffCustomer}` : `0`}
                         description="Increased from last month"
                     />
                     <StatCard
                         title="Total Containers "
                         value={totalContainers}
-                        badge={diffContainer > 0 ? `+${diffContainer}` : `${diffContainer}`}
+                        badge={diffContainer > 0 ? `+${diffContainer}` : `0`}
                         description="Increased from last month"
                     />
                 </div>

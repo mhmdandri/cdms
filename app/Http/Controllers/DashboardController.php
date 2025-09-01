@@ -200,7 +200,8 @@ class DashboardController extends Controller
                     ->whereYear('task_assignments.completed_at', Carbon::now()->year);
             })->count();
         $newTasks = Task::where('status', 'pending')->count();
-        $totalTasks = Task::count();
+        $totalTasks = Task::whereMonth('created_at', Carbon::now()->month)
+            ->whereYear('created_at', Carbon::now()->year)->count();
         return Inertia::render('dashboard', [
             'completedTask' => $completedTask,
             'newTasks' => $newTasks,

@@ -11,7 +11,7 @@ export type ActivityItem = {
     text: string;
     time: string;
     timestamp?: string;
-    status?: 'completed' | 'cancelled' | 'in-progress' | 'new';
+    status?: 'completed' | 'cancelled' | 'damaged' | 'new';
 };
 
 const ActivitiesRoot = ({
@@ -47,7 +47,7 @@ const ActivitiesRoot = ({
                 {/* Activities List */}
                 <ul className="max-h-80 flex-1 space-y-1 overflow-y-auto">
                     {data.map((item, idx) => (
-                        <Item key={item.id ?? idx} {...item} />
+                        <Item key={`${item.id}-${idx}`} {...item} />
                     ))}
                     {data.length === 0 && <li className="text-center text-gray-500 dark:text-neutral-400">No activities found</li>}
                 </ul>
@@ -77,69 +77,6 @@ const ActivitiesRoot = ({
 
     return <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">{children}</div>;
 };
-
-// const Chart = () => {
-
-//     const { chartData } = usePage<{
-//         chartData: { week: string; in: number; out: number }[];
-//     }>().props;
-
-//     return (
-//         <div className="w-full rounded-2xl border bg-white shadow-sm dark:border-neutral-800 dark:bg-neutral-900">
-//             <div className="border-b-2 p-4">
-//                 <div className="flex items-center justify-between">
-//                     <h2 className="text-lg font-semibold text-gray-900 dark:text-neutral-100">Containers Activity</h2>
-//                     <Calendar className="h-4 w-4 text-gray-500" />
-//                 </div>
-//             </div>
-
-//             <div className="h-full w-full p-4 md:h-80 lg:h-96">
-//                 <ResponsiveContainer width="100%" height="100%">
-//                     <LineChart data={chartData || []}>
-//                         <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" className="dark:stroke-neutral-700" />
-//                         <XAxis dataKey="week" stroke="#6b7280" className="dark:text-neutral-300" />
-//                         <YAxis stroke="#6b7280" className="dark:text-neutral-300" />
-//                         <Tooltip
-//                             contentStyle={{
-//                                 backgroundColor: 'rgba(255, 255, 255, 0.95)',
-//                                 border: '1px solid #e5e7eb',
-//                                 borderRadius: '8px',
-//                                 color: '#374151',
-//                             }}
-//                         />
-//                         <Legend />
-//                         <Line
-//                             type="monotone"
-//                             dataKey="in"
-//                             name="Containers In"
-//                             stroke="#3b82f6"
-//                             strokeWidth={2}
-//                             dot={{ r: 4, fill: '#3b82f6' }}
-//                             activeDot={{
-//                                 r: 6,
-//                                 stroke: '#3b82f6',
-//                                 strokeWidth: 2,
-//                             }}
-//                         />
-//                         <Line
-//                             type="monotone"
-//                             dataKey="out"
-//                             name="Containers Out"
-//                             stroke="#10b981"
-//                             strokeWidth={2}
-//                             dot={{ r: 4, fill: '#10b981' }}
-//                             activeDot={{
-//                                 r: 6,
-//                                 stroke: '#10b981',
-//                                 strokeWidth: 2,
-//                             }}
-//                         />
-//                     </LineChart>
-//                 </ResponsiveContainer>
-//             </div>
-//         </div>
-//     );
-// };
 
 const Chart = () => {
     const { chartData } = usePage<{
@@ -214,7 +151,7 @@ const Item = ({ icon: Icon, text, time, status }: ActivityItem) => {
                 return 'text-green-500';
             case 'cancelled':
                 return 'text-red-500';
-            case 'in-progress':
+            case 'damaged':
                 return 'text-blue-500';
             case 'new':
                 return 'text-purple-500';
@@ -274,7 +211,7 @@ const ListActivities = ({ limit = 4, showFilters = false }: { limit?: number; sh
             text: `Container ${item.container?.container_number} marked as ${item.condition}`,
             time: formatDate(item.updated_at, 'auto'),
             timestamp: item.updated_at,
-            status: 'completed',
+            status: 'damaged',
         }));
 
         const recentActivities: ActivityItem[] = (recentTaskCompleted || []).map((item: any) => ({
