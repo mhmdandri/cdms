@@ -26,15 +26,6 @@ export default function Dashboard() {
         cancelledTasks: number;
         totalTasks: number;
     }>().props;
-    // const [showModal, setShowModal] = useState(false);
-    // const flash = {
-    //     success: 'Sukses',
-    //     // error: 'error',
-    //     // info: 'Selamat datang di dashboard Anda!',
-    // };
-    // useEffect(() => {
-    //     setShowModal(true);
-    // });
 
     return (
         <AppLayout breadcrumbs={breadcrumbs}>
@@ -49,8 +40,8 @@ export default function Dashboard() {
                     />
                     <StatCard
                         title="Cancelled Tasks"
-                        value={cancelledTasks}
-                        badge={cancelledTasks > 0 ? `+${cancelledTasks}` : `${cancelledTasks}`}
+                        value={cancelledTasks > 0 ? cancelledTasks : '0'}
+                        badge={cancelledTasks > 0 ? `+${cancelledTasks}` : `0`}
                         description="Increased from last month"
                     />
                     <StatCard
